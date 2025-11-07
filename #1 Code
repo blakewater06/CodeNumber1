@@ -1,0 +1,58 @@
+print("Welcome to the Enhanced Simple Calculator!")
+print("Enter a simple calculation (e.g., 10 * 4.5).")
+print("Type 'exit' to quit.")
+print("-" * 30)
+
+while True:
+    # 1. Get user input
+    user_input = input("Calculation: ")
+    
+    # Check for exit command
+    if user_input.lower() == 'exit':
+        print("Goodbye!")
+        break
+
+    try:
+        # 2. Split the input string into components (num1, operator, num2)
+        # Example: if input is "5 + 3", components will be ["5", "+", "3"]
+        components = user_input.split()
+
+        # Check if the input has exactly 3 parts
+        if len(components) != 3:
+            print("🛑 Invalid format. Please use 'number operator number' (e.g., 5 + 3).")
+            continue
+
+        # 3. Assign components to variables and convert data types
+        # Use float() for numbers to handle decimals (the float data type)
+        num1 = float(components[0])
+        operator = components[1]  # Stays as the string data type
+        num2 = float(components[2])
+
+        # 4. Perform the arithmetic operation
+        result = None # Initialize the result variable
+
+        if operator == '+':
+            result = num1 + num2
+        elif operator == '-':
+            result = num1 - num2
+        elif operator == '*':
+            result = num1 * num2
+        elif operator == '/':
+            if num2 != 0:
+                result = num1 / num2
+            else:
+                print("🛑 Error: Cannot divide by zero!")
+                continue
+        else:
+            print(f"🛑 Error: Unsupported operator '{operator}'.")
+            continue
+
+        # 5. Print the result
+        # f-string formatting ensures clear output
+        print(f"✅ Result: {user_input} = **{result}**")
+
+    # 6. Handle errors if the user inputs non-numeric characters for numbers
+    except ValueError:
+        print("🛑 Invalid input. Please ensure numbers are valid (e.g., 10, 5.5).")
+    except Exception as e:
+        print(f"🛑 An unexpected error occurred: {e}")
