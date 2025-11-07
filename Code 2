@@ -1,0 +1,12 @@
+# 1. Get the current year and the birth year
+current_year = int(input("Enter the current year (e.g., 2024): "))
+birth_year = int(input("Enter your birth year: "))
+
+# 2. Calculate the age using subtraction
+age = current_year - birth_year
+
+# 3. Print a personalized message (demonstrating string concatenation/f-strings)
+# Also asks for and prints the user's name (a string data type)
+name = input("What is your name? ")
+
+print(f"Hello, {name}! Based on your input, you are approximately {age} years old.")
